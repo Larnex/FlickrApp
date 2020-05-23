@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Flickr Feed</title>
+
+	<style>
+		.image {
+			float: left;
+			padding: 10px;
+			border: solid 1px rgb(27, 45, 94);
+			background-color: white;
+			margin: 0 30px 30px 0;
+		}
+
+		.image:hover {
+			border-color: red;
+			background-color: rgb(204, 204, 204);
+		}
+	</style>
+
+	<!-- Put jQuery here -->
+	<script src="jquery.js"></script>
+	<script>
+		$(function () {
+			const URL =
+				"https://api.flickr.com/services/feeds/photos_public.gne?format=json&jsoncallback=?";
+			const ID = "&id=43432513@N02";
+			const URLwithID = URL + ID;
+
+
+			$.getJSON(URLwithID, data => {
+				$("h1").text(data.title);
+				$.each(data.items, (i, image) => {
+					$("#photos").append(`<img src=${image.media.m}>`);
+				})
+
+			})
+		}); // end ready
+	</script>
+</head>
+
+<body>
+	<div class="wrapper">
+		<header>
+			Flickr Gallery
+		</header>
+		<div class="content">
+			<div class="main">
+				<h1>Flickr Images</h1>
+				<div id="photos"></div>
+				<br class="clearLeft">
+			</div>
+		</div>
+		<footer>
+
+		</footer>
+	</div>
+</body>
+
+</html>
