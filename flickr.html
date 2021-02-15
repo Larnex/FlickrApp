@@ -23,15 +23,14 @@
     <script src="jquery.js"></script>
     <script>
       $(function () {
-        const URL =
-          "https://api.flickr.com/services/feeds/photos_public.gne?format=json&jsoncallback=?";
-        const ID = "&id=43432513@N02";
+        const URL = 'https://api.flickr.com/services/feeds/photos_public.gne?format=json&jsoncallback=?';
+        const ID = '&id=43432513@N02';
         const URLwithID = URL + ID;
 
         $.getJSON(URLwithID, (data) => {
-          $("h1").text(data.title);
+          $('h1').text(data.title);
           $.each(data.items, (i, image) => {
-            $("#photos").append(`<img class="image" src=${image.media.m}>`);
+            $('#photos').append(`<img class="image" src=${image.media.m}>`);
           });
         });
       }); // end ready
@@ -40,9 +39,7 @@
 
   <body>
     <div class="wrapper">
-      <header>
-        Flickr Gallery
-      </header>
+      <header>Flickr Gallery</header>
       <div class="content">
         <div class="main">
           <h1>Flickr Images</h1>
